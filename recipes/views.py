@@ -2,17 +2,17 @@ from rest_framework.generics import (
     ListCreateAPIView,
     RetrieveUpdateDestroyAPIView,
 )
-from .models import Thing
+from .models import Recipe
 from .permissions import IsOwnerOrReadOnly
 from .serializers import Recipeserializer
 
 
-class ThingList(ListCreateAPIView):
-    queryset = Thing.objects.all()
+class RecipeList(ListCreateAPIView):
+    queryset = Recipe.objects.all()
     serializer_class = Recipeserializer
 
 
-class ThingDetail(RetrieveUpdateDestroyAPIView):
+class RecipeDetail(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsOwnerOrReadOnly,)
-    queryset = Thing.objects.all()
+    queryset = Recipe.objects.all()
     serializer_class = Recipeserializer
