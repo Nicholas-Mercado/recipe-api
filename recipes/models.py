@@ -1,9 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from .validators import validate_unit_of_measure
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=30)
     amount = models.IntegerField(blank=True, null=True)
+    unit = models.CharField(max_length=50, validators=[validate_unit_of_measure], blank=True, null=True)
     def __str__(self):
         return self.name
 
